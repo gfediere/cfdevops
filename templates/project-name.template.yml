@@ -41,6 +41,10 @@ Mappings:
       CIDR: '10.0.100.0/24'
     PrivateTwo:
       CIDR: '10.0.101.0/24'
+    PrivateThree:
+      CIDR: '10.0.200.0/24'
+    PrivateFour:
+      CIDR: '10.0.201.0/24'
   AWSInstanceType2Arch:
     t2.micro:
       Arch: HVM64
@@ -217,6 +221,28 @@ Resources:
         - Key: Name
           Value: !Sub ${EnvironmentName} Private Subnet (AZ2)
 
+  PrivateThree:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      CidrBlock: !FindInMap ['SubnetConfig', 'PrivateThree', 'CIDR']
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName} RDS Private Subnet (AZ1)
+
+  PrivateFour:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 1, !GetAZs '' ]
+      CidrBlock: !FindInMap ['SubnetConfig', 'PrivateFour', 'CIDR']
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName} RDS Private Subnet (AZ2)
+
   NatGateway1EIP:
     Type: AWS::EC2::EIP
     DependsOn: InternetGatewayAttachment
@@ -269,7 +295,6 @@ Resources:
       RouteTableId: !Ref PublicRouteTable
       SubnetId: !Ref PublicTwo
 
-
   PrivateRouteTable1:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -291,6 +316,12 @@ Resources:
       RouteTableId: !Ref PrivateRouteTable1
       SubnetId: !Ref PrivateOne
 
+  PrivateSubnet3RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable1
+      SubnetId: !Ref PrivateThree
+
   PrivateRouteTable2:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -311,6 +342,12 @@ Resources:
     Properties:
       RouteTableId: !Ref PrivateRouteTable2
       SubnetId: !Ref PrivateTwo
+  
+  PrivateSubnet4RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable2
+      SubnetId: !Ref PrivateFour
 
   NoIngressSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -562,17 +599,57 @@ Resources:
         Value:
           Ref: WebServerGroup
       ComparisonOperator: LessThanThreshold
-        
+
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP access from front to RDS Serverless
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '3306'
+        ToPort: '3306'
+        SourceSecurityGroupId: 
+          Ref: WebServerSecurityGroup
+      VpcId: !Ref 'VPC'
+
+  RDSSubnetGroup:
+    Type: "AWS::RDS::DBSubnetGroup"
+    Properties: 
+      DBSubnetGroupDescription: "DBSubnet Group"
+      DBSubnetGroupName: RDSSubnetGroup
+      SubnetIds:
+        - !Ref PrivateThree
+        - !Ref PrivateFour
+
+  RDSCluster:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      MasterUsername: 'dbuser'
+      MasterUserPassword: 'passwordpassword'
+      DatabaseName: 'dbname'
+      Engine: aurora
+      EngineMode: serverless
+      ScalingConfiguration:
+        AutoPause: true
+        MaxCapacity: 16
+        MinCapacity: 2
+        SecondsUntilAutoPause: 300
+      DBSubnetGroupName: 'rdssubnetgroup'
+      VpcSecurityGroupIds:
+        - !Ref RDSSecurityGroup
+    DependsOn: RDSSubnetGroup
+
 Outputs:
-  ALB:
-    Description: A reference to the created ALB Url
-    Value: !GetAtt ApplicationLoadBalancer.DNSName
-  WebServerSecurityGroup:
-    Description: The security group ID to use for public web servers
-    Value:
-      Fn::GetAtt:
-      - WebServerSecurityGroup
-      - GroupId
-    Export:
-      Name:
-        Fn::Sub: "${AWS::StackName}-SecurityGroupID"
+  RDSEndpoint:
+    Description: A reference to the created RDS Endpoint
+    Value: !GetAtt RDSCluster.Endpoint.Address
+  RDSDbname:
+    Description: A reference to the created RDS DBName
+    Value: 'dbname'
+  RDSUser:
+    Description: A reference to the created RDS User
+    Value: 'dbuser'
+  RDSPassword:
+    Description: A reference to the created RDS User
+    Value: 'passwordpassword'
+
