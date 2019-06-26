@@ -1,0 +1,84 @@
+-----------------------------------------------------------------------------
+Region: eu-west-3
+StackName: tCaT-tag-taskcat-json-316ec6ac
+*****************************************************************************
+ResourceStatusReason:  
+Stack launch was successful
+*****************************************************************************
+*****************************************************************************
+Events:  
+TimeStamp                         ResourceStatus      ResourceType                           LogicalResourceId                    ResourceStatusReason
+--------------------------------  ------------------  -------------------------------------  -----------------------------------  ---------------------------
+2019-06-26 08:25:41.406000+00:00  CREATE_COMPLETE     AWS::CloudFormation::Stack             tCaT-tag-taskcat-json-316ec6ac
+2019-06-26 08:25:39.335000+00:00  CREATE_COMPLETE     AWS::EC2::Route                        DefaultPrivateRoute2
+2019-06-26 08:25:23.979000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPrivateRoute2                 Resource creation Initiated
+2019-06-26 08:25:23.938000+00:00  CREATE_COMPLETE     AWS::EC2::Route                        DefaultPrivateRoute1
+2019-06-26 08:25:23.395000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPrivateRoute2
+2019-06-26 08:25:20.716000+00:00  CREATE_COMPLETE     AWS::EC2::NatGateway                   NatGateway2
+2019-06-26 08:25:08.337000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPrivateRoute1                 Resource creation Initiated
+2019-06-26 08:25:07.619000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPrivateRoute1
+2019-06-26 08:25:04.907000+00:00  CREATE_COMPLETE     AWS::EC2::NatGateway                   NatGateway1
+2019-06-26 08:23:17.787000+00:00  CREATE_IN_PROGRESS  AWS::EC2::NatGateway                   NatGateway1                          Resource creation Initiated
+2019-06-26 08:23:17.731000+00:00  CREATE_IN_PROGRESS  AWS::EC2::NatGateway                   NatGateway2                          Resource creation Initiated
+2019-06-26 08:23:17.370000+00:00  CREATE_IN_PROGRESS  AWS::EC2::NatGateway                   NatGateway1
+2019-06-26 08:23:17.349000+00:00  CREATE_IN_PROGRESS  AWS::EC2::NatGateway                   NatGateway2
+2019-06-26 08:23:15.744000+00:00  CREATE_COMPLETE     AWS::EC2::SubnetRouteTableAssociation  PublicSubnet2RouteTableAssociation
+2019-06-26 08:23:15.677000+00:00  CREATE_COMPLETE     AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet1RouteTableAssociation
+2019-06-26 08:23:14.999000+00:00  CREATE_COMPLETE     AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet2RouteTableAssociation
+2019-06-26 08:23:14.911000+00:00  CREATE_COMPLETE     AWS::EC2::SubnetRouteTableAssociation  PublicSubnet1RouteTableAssociation
+2019-06-26 08:23:14.570000+00:00  CREATE_COMPLETE     AWS::EC2::EIP                          NatGateway1EIP
+2019-06-26 08:23:14.553000+00:00  CREATE_COMPLETE     AWS::EC2::EIP                          NatGateway2EIP
+2019-06-26 08:23:14.158000+00:00  CREATE_COMPLETE     AWS::EC2::Route                        DefaultPublicRoute
+2019-06-26 08:23:00.330000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PublicSubnet2RouteTableAssociation   Resource creation Initiated
+2019-06-26 08:23:00.238000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet1RouteTableAssociation  Resource creation Initiated
+2019-06-26 08:22:59.593000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PublicSubnet1RouteTableAssociation   Resource creation Initiated
+2019-06-26 08:22:59.529000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet2RouteTableAssociation  Resource creation Initiated
+2019-06-26 08:22:59.428000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PublicSubnet2RouteTableAssociation
+2019-06-26 08:22:59.364000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet1RouteTableAssociation
+2019-06-26 08:22:59.190000+00:00  CREATE_IN_PROGRESS  AWS::EC2::EIP                          NatGateway1EIP                       Resource creation Initiated
+2019-06-26 08:22:59.182000+00:00  CREATE_IN_PROGRESS  AWS::EC2::EIP                          NatGateway2EIP                       Resource creation Initiated
+2019-06-26 08:22:58.919000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PublicSubnet1RouteTableAssociation
+2019-06-26 08:22:58.854000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SubnetRouteTableAssociation  PrivateSubnet2RouteTableAssociation
+2019-06-26 08:22:58.807000+00:00  CREATE_IN_PROGRESS  AWS::EC2::EIP                          NatGateway2EIP
+2019-06-26 08:22:58.799000+00:00  CREATE_IN_PROGRESS  AWS::EC2::EIP                          NatGateway1EIP
+2019-06-26 08:22:58.747000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPublicRoute                   Resource creation Initiated
+2019-06-26 08:22:58.277000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Route                        DefaultPublicRoute
+2019-06-26 08:22:56.530000+00:00  CREATE_COMPLETE     AWS::EC2::Subnet                       PublicOne
+2019-06-26 08:22:56.500000+00:00  CREATE_COMPLETE     AWS::EC2::Subnet                       PublicTwo
+2019-06-26 08:22:56.422000+00:00  CREATE_COMPLETE     AWS::EC2::Subnet                       PrivateTwo
+2019-06-26 08:22:56.284000+00:00  CREATE_COMPLETE     AWS::EC2::Subnet                       PrivateOne
+2019-06-26 08:22:56.051000+00:00  CREATE_COMPLETE     AWS::EC2::VPCGatewayAttachment         InternetGatewayAttachment
+2019-06-26 08:22:45.060000+00:00  CREATE_COMPLETE     AWS::EC2::SecurityGroup                NoIngressSecurityGroup
+2019-06-26 08:22:44.604000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SecurityGroup                NoIngressSecurityGroup               Resource creation Initiated
+2019-06-26 08:22:41.190000+00:00  CREATE_COMPLETE     AWS::EC2::RouteTable                   PrivateRouteTable2
+2019-06-26 08:22:41.097000+00:00  CREATE_COMPLETE     AWS::EC2::RouteTable                   PublicRouteTable
+2019-06-26 08:22:40.727000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PublicOne                            Resource creation Initiated
+2019-06-26 08:22:40.653000+00:00  CREATE_COMPLETE     AWS::EC2::RouteTable                   PrivateRouteTable1
+2019-06-26 08:22:40.548000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PublicTwo                            Resource creation Initiated
+2019-06-26 08:22:40.547000+00:00  CREATE_IN_PROGRESS  AWS::EC2::VPCGatewayAttachment         InternetGatewayAttachment            Resource creation Initiated
+2019-06-26 08:22:40.477000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PrivateTwo                           Resource creation Initiated
+2019-06-26 08:22:40.398000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PrivateOne                           Resource creation Initiated
+2019-06-26 08:22:40.387000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PrivateRouteTable2                   Resource creation Initiated
+2019-06-26 08:22:40.363000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PublicRouteTable                     Resource creation Initiated
+2019-06-26 08:22:40.350000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PublicOne
+2019-06-26 08:22:40.096000+00:00  CREATE_IN_PROGRESS  AWS::EC2::VPCGatewayAttachment         InternetGatewayAttachment
+2019-06-26 08:22:40.093000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PublicTwo
+2019-06-26 08:22:40.049000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PrivateRouteTable2
+2019-06-26 08:22:39.998000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PublicRouteTable
+2019-06-26 08:22:39.925000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PrivateRouteTable1                   Resource creation Initiated
+2019-06-26 08:22:39.885000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PrivateOne
+2019-06-26 08:22:39.868000+00:00  CREATE_IN_PROGRESS  AWS::EC2::Subnet                       PrivateTwo
+2019-06-26 08:22:39.525000+00:00  CREATE_IN_PROGRESS  AWS::EC2::RouteTable                   PrivateRouteTable1
+2019-06-26 08:22:39.496000+00:00  CREATE_IN_PROGRESS  AWS::EC2::SecurityGroup                NoIngressSecurityGroup
+2019-06-26 08:22:36.990000+00:00  CREATE_COMPLETE     AWS::EC2::VPC                          VPC
+2019-06-26 08:22:36.571000+00:00  CREATE_COMPLETE     AWS::EC2::InternetGateway              InternetGateway
+2019-06-26 08:22:20.610000+00:00  CREATE_IN_PROGRESS  AWS::EC2::InternetGateway              InternetGateway                      Resource creation Initiated
+2019-06-26 08:22:20.458000+00:00  CREATE_IN_PROGRESS  AWS::EC2::VPC                          VPC                                  Resource creation Initiated
+2019-06-26 08:22:20.238000+00:00  CREATE_IN_PROGRESS  AWS::EC2::InternetGateway              InternetGateway
+2019-06-26 08:22:20.031000+00:00  CREATE_IN_PROGRESS  AWS::EC2::VPC                          VPC
+2019-06-26 08:22:16.825000+00:00  CREATE_IN_PROGRESS  AWS::CloudFormation::Stack             tCaT-tag-taskcat-json-316ec6ac       User Initiated
+*****************************************************************************
+-----------------------------------------------------------------------------
+Tested on: Wednesday, 26. June 2019 10:25AM
+-----------------------------------------------------------------------------
+

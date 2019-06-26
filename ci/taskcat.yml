@@ -1,0 +1,12 @@
+---
+global:
+  owner: fediereg@amazon.com
+  qsname: cfdevops
+  regions:
+    - eu-west-3
+tests:
+  taskcat-json:
+    parameter_input: project-name-input.json
+    regions:
+      - eu-west-3
+    template_file: project-name.template.yml
